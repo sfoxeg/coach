@@ -1,0 +1,15 @@
+{% extends "website/base.html" %}
+
+{% block main %}
+<section id="portfolio">
+<form method="POST">
+    {% csrf_token %}
+    <ul class="mastermaind_reg_form">
+        {{ form.as_ul }}
+        <li>
+            <button type="submit">Отправить</button>
+        </li>
+    </ul>
+</form>
+</section>
+{% endblock %}

@@ -1,0 +1,67 @@
+   <section id="portfolio">
+
+      <div class="row section-head">
+
+      	<div class="twelve columns">
+
+      		<h1>Что я могу предложить<span>?</span></h1>
+
+	         <hr />
+
+	         <p>Тут некий текст про список услуг и что охуенно было бы заплатить мне 100500 тыщ милльёнов
+	         </p>
+
+	      </div>
+
+      </div> <!-- end section-head -->
+
+      <div class="row items">
+
+         <!-- service-wrapper -->
+         <div id="portfolio-wrapper" class="bgrid-fourth s-bgrid-third tab-bgrid-half">
+
+{% for service in services %}
+			 <div class="bgrid folio-item">
+               <div class="item-wrap">
+				   <a href="#modal-{{ forloop.counter }}">
+					   <img src="media/{{ service.image }}" alt="{{ service.title }}">
+					   <div class="overlay"></div>
+					   <div class="portfolio-item-meta">
+						   <h5>{{service.title}}</h5>
+						   <p>{{service.desc}}</p>
+					   </div>
+					   <div class="link-icon"><i class="fa fa-plus"></i></div>
+				   </a>
+			   </div>
+			</div> <!-- item end -->
+
+{% endfor %}
+
+         </div> <!-- end service-wrapper -->
+
+{% for service in services %}
+         <!-- modal popup {{ forloop.counter }}
+	   	========================================================= -->
+         <div id="modal-{{ forloop.counter }}" class="popup-modal mfp-hide">
+
+			 <div class="media">
+				 <img src="media/{{ service.image }}" alt="{{ service.title }}" />
+			 </div>
+
+			 <div class="description-box">
+				 <h4>{{ service.title }}</h4>
+				 <p>{{ service.desc }}</p>
+				 <span class="categories">{{ service.price }}</span>
+			 </div>
+
+			 <div class="link-box group">
+				 <a href="http://www.behance.net">Купить</a>
+				 <a href="#" class="popup-modal-dismiss">Закрыть</a>
+			 </div>
+
+		 </div><!-- modal-{{ forloop.counter }} end -->
+{% endfor %}
+
+      </div>  <!-- end row -->
+
+   </section> <!-- end portfolio -->

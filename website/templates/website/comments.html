@@ -1,0 +1,22 @@
+{% for comment in comments %}
+
+            <div class="comment">
+
+                <div class="bgrid comment-ava">
+
+                    <img src="{{comment.ava}}" alt="ava" />
+
+                    <div class="comment-name">
+                        <h3>{{comment.name}}</h3>
+                        <span>{{comment.date}}</span>
+                    </div>
+
+                </div>
+
+                <div class="comment-text">
+                    <p>{{comment.text}}</p>
+                </div>
+
+            </div> <!-- end comment -->
+
+{% endfor %}
