@@ -191,38 +191,4 @@
     		e.preventDefault();
     		$.magnificPopup.close();
     });
-
-
-     $("#mm_reg").click(function(){
-	    var name = $("input#fio").val();
-	    var phone = $("input#phone").val();
-	    var mail = $("input#mail").val();
-	    var request = $("input#request").val();
-
-	    if (name) {
-	        if (phone) {
-	            if (mail) {
-	                if (request) {
-	                    $.post("/mm_reg_router", {
-	                    name: name,
-	                    phone: phone,
-	                    mail: mail,
-	                    request: request
-	                    }, function(data) {
-	                        alert(data)
-	                    })
-	                } else {
-	                    alert('Не указан запрос')
-	                }
-	            } else {
-	                alert('Укажите почту')
-	            }
-	        } else {
-	            alert('Укажите телефон')
-	        }
-	    } else {
-	        alert('Укажите имя');
-	    }
-	  });
-
 })(jQuery);

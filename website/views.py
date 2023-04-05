@@ -1,7 +1,6 @@
-from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render, redirect
 from .models import Services
-from .forms import mastermaind_reg_form
+from .forms import Mastermind_reg_form
 from .vk import comments
 
 
@@ -20,24 +19,11 @@ def index(request):
 def mm_reg(request):
     # Если что-то пришло
     if request.method == "POST":
-        form = mastermaind_reg_form(request.POST)
-        fio = form.cleaned_data['fio']
-        phoneNumber = form.cleaned_data['phoneNumber']
-        email = form.cleaned_data['email']
-        request = form.cleaned_data['request']
-        # То проверяем валидны ли данные
+        form = Mastermind_reg_form(request.POST)
         if form.is_valid():
-            print(fio)
-            return HttpResponseRedirect("/")
+            form.save()
+            return redirect('/')
         else:
-            # Если не валидны, просто перезагрузим форму
-            form = mastermaind_reg_form(initial={
-                'fio': fio,
-                'phoneNumber': phoneNumber,
-                'email': email,
-                'request': request
-            })
-            return render(request, "website/mastermaind_reg.html", {'form': form})
-    else:
-        return render(request, "website/mastermaind_reg.html", {'form': mastermaind_reg_form()})
+            form = Mastermind_reg_form()
+    return render(request, 'website/mastermaind_reg.html', {'form': Mastermind_reg_form()})
 

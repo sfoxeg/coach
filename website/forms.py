@@ -1,9 +1,20 @@
 from django import forms
-from django.core.validators import RegexValidator
+from .models import Mastermind_reg
 
 
-class mastermaind_reg_form(forms.Form):
-    fio = forms.CharField(max_length=250)
-    phoneNumber = forms.RegexField(regex=r"^\+?1?\d{8,15}$", max_length=16)
-    email = forms.EmailField(max_length=150)
-    request = forms.CharField(widget=forms.Textarea)
+class Mastermind_reg_form(forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for key, field in self.fields.items():
+            field.label = ""
+    class Meta:
+        model = Mastermind_reg
+        fields = ['fio', 'phone', 'email', 'request']
+        label = ''
+        widgets = {
+            'fio': forms.TextInput(attrs={'placeholder': 'ФИО'}),
+            'phone': forms.TextInput(attrs={'placeholder': '7XXXXXXXXXX'}),
+            'email': forms.TextInput(attrs={'placeholder': 'chemodan@bolshoy.ru'}),
+            'request': forms.Textarea(attrs={'placeholder': 'Какой у вас запрос'})
+        }
