@@ -2,5 +2,6 @@
 venv
 static
 media
+tg_bot/migrations
 website/migrations
 db.sqlite3

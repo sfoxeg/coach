@@ -17,13 +17,20 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from website import views
+from website.views import index, mm_reg
+from tg_bot.views import cat
 
-urlpatterns = [
-    path('', views.index),
-    path('mastermaind_reg/', views.mm_reg),
+website_urls = [
+    path('', index),
+    path('mastermaind_reg/', mm_reg),
     path('admin/', admin.site.urls),
 ]
+
+tg_bot_urls = [
+    path('cat/', cat)
+]
+
+urlpatterns = website_urls + tg_bot_urls
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
