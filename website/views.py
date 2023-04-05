@@ -17,7 +17,6 @@ def index(request):
 
 
 def mm_reg(request):
-    # Если что-то пришло
     if request.method == "POST":
         form = Mastermind_reg_form(request.POST)
         if form.is_valid():
@@ -26,4 +25,3 @@ def mm_reg(request):
         else:
             form = Mastermind_reg_form()
     return render(request, 'website/mastermaind_reg.html', {'form': Mastermind_reg_form()})
-
