@@ -1,5 +1,5 @@
-{% load static %}
 <!DOCTYPE html>
+{% load static %}
 <html lang="ru">
 <head>
 
@@ -85,6 +85,15 @@
    <script src="{% static 'js/jquery.placeholder.min.js' %}"></script>
    <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
    <script src="{% static 'js/main.js' %}"></script>
+
+<script type="text/javascript" src="https://vk.com/js/api/openapi.js?169"></script>
+
+<!-- VK Widget -->
+<div id="vk_community_messages"></div>
+<script type="text/javascript">
+VK.Widgets.CommunityMessages("vk_community_messages", 206202301, {expandTimeout: "120000",tooltipButtonText: "Есть вопрос?"});
+</script>
+
 </body>
 
 </html>
