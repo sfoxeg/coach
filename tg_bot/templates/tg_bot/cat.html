@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+	<head>
+    	<meta charset="UTF-8">
+    	<title>Title</title>
+	</head>
+	<body>
+	<div class="main">
+{% for service in services %}
+		<div>
+			<h1>{{service.title}}</h1>
+			<img src="../media/{{ service.image }}" alt="{{ service.title }}">
+			<p><span>{{service.price}}</span></p>
+			<p>{{service.desc}}</p>
+			<button id="buy">Купить</button>
+		</div>
+{% endfor %}
+		</div>
+	<script src="https://telegram.org/js/telegram-web-app.js"></script>
+	</body>
+</html>

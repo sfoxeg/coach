@@ -1,7 +1,14 @@
-from django.http import HttpResponse
 from django.shortcuts import render
+from website.models import Services
 
 
 # Create your views here.
 def cat(request):
-    return HttpResponse('Test')
+    services = Services.objects.filter(enable=True)
+    return render(
+        request,
+        "tg_bot/cat.html",
+        context={
+            "services": services
+        }
+    )
